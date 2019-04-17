@@ -12,5 +12,8 @@ setup(name='divio-dploi-deployments',
       description='Utilities for dploi style deplouments',
       author='Nephila',
       author_email='info@nephila.it',
+      install_requires=[
+          'fabric>=2,<3'
+      ],
       packages=['divio_dploi_deployments',],
      )
