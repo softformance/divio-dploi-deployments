@@ -1,0 +1,2 @@
+recursive-include divio_dploi_deployments *
+global-exclude *.py[co]
