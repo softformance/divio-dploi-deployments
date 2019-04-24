@@ -1,37 +1,35 @@
 # -*- coding: utf-8 -*-
-from fabric.api import env
-from fabric.decorators import task
-from fabric.operations import run
+from fabric import task
 
 
 @task
-def restart():
-    run('~/bin/gunicorn restart')
-    run('~/bin/celeryd restart')
-    run('~/bin/celerycam restart')
+def restart(c):
+    c.run('~/bin/gunicorn restart')
+    c.run('~/bin/celeryd restart')
+    c.run('~/bin/celerycam restart')
 
 
 @task
-def start():
-    run('~/bin/gunicorn start')
-    run('~/bin/celeryd start')
-    run('~/bin/celerycam start')
+def start(c):
+    c.run('~/bin/gunicorn start')
+    c.run('~/bin/celeryd start')
+    c.run('~/bin/celerycam start')
 
 
 @task
-def stop():
-    run('~/bin/gunicorn stop')
-    run('~/bin/celeryd stop')
-    run('~/bin/celerycam stop')
+def stop(c):
+    c.run('~/bin/gunicorn stop')
+    c.run('~/bin/celeryd stop')
+    c.run('~/bin/celerycam stop')
 
 
 @task
-def update_config_file():
+def update_config_file(c):
     # no config
     pass
 
 
 @task
-def update():
+def update(c):
     # no config
     pass
