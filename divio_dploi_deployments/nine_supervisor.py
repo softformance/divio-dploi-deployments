@@ -5,19 +5,19 @@ from dploi_fabric.utils import config
 
 @task
 def stop(c):
-    for site, site_config in config.sites(c).items():
+    for site, site_config in list(config.sites(c).items()):
         c.run('supervisorctl --c ~/config/supervisord.conf stop %s:*' % get_group_name(site, site_config))
 
 
 @task
 def start(c):
-    for site, site_config in config.sites(c).items():
+    for site, site_config in list(config.sites(c).items()):
         c.run('supervisorctl --c ~/config/supervisord.conf start %s:*' % get_group_name(site, site_config))
 
 
 @task
 def restart(c):
-    for site, site_config in config.sites(c).items():
+    for site, site_config in list(config.sites(c).items()):
         c.run('supervisorctl  --c ~/config/supervisord.conf restart %s:*' % get_group_name(site, site_config))
 
 
@@ -28,17 +28,17 @@ def status(c):
 
     Note: "status" does not yet support the group syntax
     """
-    for site, site_config in config.sites(c).items():
+    for site, site_config in list(config.sites(c).items()):
         group_name = get_group_name(site, site_config)
-        for process_name, process_cmd in site_config.processes.items():
+        for process_name, process_cmd in list(site_config.processes.items()):
             c.run('supervisorctl --c ~/config/supervisord.conf status %s:%s' % (group_name, process_name))
 
 
 @task
 def update(c):
-    for site, site_config in config.sites(c).items():
+    for site, site_config in list(config.sites(c).items()):
         group_name = get_group_name(site, site_config)
-        for process_name, process_cmd in site_config.processes.items():
+        for process_name, process_cmd in list(site_config.processes.items()):
             c.run('supervisorctl --c ~/config/supervisord.conf update %s:%s' % (group_name, process_name))
 
 
